@@ -1,0 +1,47 @@
+<style>
+    body{
+        margin:0;padding:0;
+        overflow: hidden;
+        background-color: #000000;
+        color: #ffffff;
+    }
+    #a, #b{
+        height: 99vh;
+        width: 40vw;
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        font-size: 50vw;
+    }
+</style>
+<body>
+  Use full screen
+  <div id="a" onclick="handleClick(0)">0</div>
+  <div id="b" onclick="handleClick(1)">0</div>
+</body>
+<script>
+    var players = [];
+    function Player(name){
+        return{
+            name: name,
+            score: 0,
+            increment: function(){
+                this.score++;
+            }
+        }
+    }
+    function updateDisplay(){
+        document.getElementById("a").textContent = players[0].score;
+        document.getElementById("b").textContent = players[1].score;
+    }
+
+    players.push(new Player("A"));
+    players.push(new Player("B"));
+
+    updateDisplay();
+
+    function handleClick(playerIndex){
+        players[playerIndex].increment();
+        updateDisplay();
+    }
+</script>
